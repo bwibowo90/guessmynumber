@@ -18,6 +18,10 @@ const displayMessage = function (message) {
   document.querySelector('.message').textContent = message;
 };
 
+const displayScore = function (score) {
+  document.querySelector('.score').textContent = score;
+};
+
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   // console.log(guess, typeof guess);
@@ -30,7 +34,7 @@ document.querySelector('.check').addEventListener('click', function () {
     // When player wins
   } else if (guess === secretNumber) {
     // document.querySelector('.message').textContent = '🎉 Correct Number!!';
-    displayMessage('🎉 Corrent Number!!!');
+    displayMessage('🎉 Correct Number!!!');
 
     document.querySelector('.number').textContent = secretNumber;
 
@@ -51,7 +55,8 @@ document.querySelector('.check').addEventListener('click', function () {
         guess > secretNumber ? '💹Too High Dude!!' : '💹Too Low Dude!!'
       );
       score--;
-      document.querySelector('.score').textContent = score;
+      //
+      displayScore(score);
     } else {
       // document.querySelector('.message').textContent = '💥 You LOST SUCKAA!!';
       displayMessage('You LOST SUCKAAA!!!');
@@ -91,7 +96,7 @@ document.querySelector('.again').addEventListener('click', function () {
   displayMessage('Start guessing Cuk...');
   document.querySelector('.guess').value = '';
   document.querySelector('.number').textContent = '?';
-  document.querySelector('.score').textContent = score;
+  displayScore(score);
   document.querySelector('.highscore').textContent = highscore;
 
   document.querySelector('body').style.backgroundColor = '#222';
